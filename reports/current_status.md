@@ -28,6 +28,7 @@
 - 최종 확인은 GitHub Pages 등 외부 공개 URL 기준으로 진행합니다.
 - noCache, 버전 쿼리, 확인용 URL 쿼리를 포함합니다.
 - 모든 캡처 이미지는 Codex가 Playwright로 직접 실행해 생성합니다.
+- ChatGPT/GitHub처럼 로그인, 권한, 계정 상태가 필요한 화면은 `수동 확인 필요 컷`으로 표시하고 대체 캡처 계획을 문서화합니다.
 
 ## 4. 완료된 Phase
 
@@ -52,6 +53,42 @@
 - 원고의 프롬프트 박스 ID 24개와 프롬프트 원문 24개가 1:1로 일치합니다.
 - 각 프롬프트는 본문 3줄 미리보기와 복사용 전문을 포함합니다.
 - 미리보기 3줄과 전문 앞 3줄 일치 검수는 `PASS`입니다.
+
+### Phase 4. 반응형 웹북 초안 완료
+
+- `webbook/` 아래 원고를 읽을 수 있는 반응형 웹북 초안을 제작했습니다.
+- 10개 원고 파일을 장별로 접근할 수 있게 구성했습니다.
+- 목차와 사이드바를 제공했습니다.
+- 프롬프트 박스는 `prompts/` 원문과 연결했습니다.
+- 프롬프트 박스는 앞 3줄 미리보기, 우측 상단 `복사하기` 버튼, `전체 보기` 토글을 포함합니다.
+- 이미지가 아직 없어도 깨진 이미지 아이콘 대신 placeholder가 보이도록 구성했습니다.
+- noCache 메타 태그, CSS/JS 버전 쿼리, 빌드 번호를 반영했습니다.
+- Playwright로 390px, 430px, 768px, 1280px 화면 검증을 완료했습니다.
+
+### Phase 5. 캡처 목록 및 Playwright 캡처 파이프라인 완료
+
+- 이미지 placeholder 98개를 추출해 캡처 목록으로 정리했습니다.
+- `reports/capture-plan.md`를 생성했습니다.
+- `reports/capture-placeholders.json`을 생성했습니다.
+- `webbook/scripts/capture-placeholder-list.js`를 생성했습니다.
+- `webbook/scripts/capture-webbook.js`를 생성했습니다.
+- 이미지 자리 98개 추출을 완료했습니다.
+- 자동화 가능 컷은 68개입니다.
+- 수동 확인 필요 컷은 30개입니다.
+- 웹북 테스트 캡처 `phase5-webbook-*` 파일을 생성했습니다.
+
+### Phase 6. 예제 사이트 2개 로컬 제작 완료
+
+- `examples/first-site/`에 이미지 한 장으로 만든 첫 웹사이트를 제작했습니다.
+- `examples/tarot-site/`에 타로카드 리딩 웹사이트를 제작했습니다.
+- 첫 웹사이트용 `sample-image.png`를 생성했습니다.
+- 타로 카드 이미지 12장을 생성했습니다.
+- Playwright로 390px, 430px, 768px, 1280px 검증을 완료했고 결과는 `PASS`입니다.
+- 첫 웹사이트에서 제목, 설명, 이미지, 버튼 표시를 확인했습니다.
+- 타로 사이트에서 메인, 주제 선택, 질문 입력, 카드 3장 선택, 결과, 카드 상세, 최근 이력 흐름을 확인했습니다.
+- 깨진 이미지는 0개입니다.
+- 가로 넘침은 없습니다.
+- `phase6-*` 캡처 스크린샷을 생성했습니다.
 
 ## 5. 생성된 주요 파일 목록
 
@@ -89,6 +126,35 @@
 - `prompts/tarot-result.md`
 - `prompts/repair-prompts.md`
 
+### webbook 웹북
+
+- `webbook/index.html`
+- `webbook/README.md`
+- `webbook/_sidebar.md`
+- `webbook/assets/book.css`
+- `webbook/assets/book.js`
+- `webbook/assets/prompts.js`
+- `webbook/assets/placeholder.css`
+- `webbook/scripts/capture-placeholder-list.js`
+- `webbook/scripts/capture-webbook.js`
+
+### reports 보고서
+
+- `reports/current_status.md`
+- `reports/capture-plan.md`
+- `reports/capture-placeholders.json`
+
+### examples 예제 사이트
+
+- `examples/first-site/index.html`
+- `examples/first-site/assets/style.css`
+- `examples/first-site/assets/app.js`
+- `examples/first-site/assets/sample-image.png`
+- `examples/tarot-site/index.html`
+- `examples/tarot-site/assets/style.css`
+- `examples/tarot-site/assets/app.js`
+- `examples/tarot-site/assets/cards/`
+
 ## 6. 현재 수치
 
 - 원고 페이지 자리: 98개
@@ -97,37 +163,58 @@
 - 프롬프트 원문: 24개
 - 프롬프트 ID 매칭: 원고 24개와 prompts 24개 1:1 일치
 - 미리보기 3줄과 전문 앞 3줄 일치 검수: PASS
+- 캡처 대상 이미지 자리: 98개
+- 자동화 가능 컷: 68개
+- 수동 확인 필요 컷: 30개
+- 첫 웹사이트 예제: 1개
+- 타로카드 리딩 웹사이트 예제: 1개
+- 타로 카드 이미지: 12장
 
-## 7. 다음 Phase
+## 7. 현재 로컬 URL
 
-다음 단계는 **Phase 4: 반응형 웹북 제작**입니다.
+- 웹북: `http://127.0.0.1:4173/webbook/?v=20260515-001`
+- 첫 웹사이트: `http://127.0.0.1:4173/examples/first-site/?v=20260516-001`
+- 타로카드 리딩 웹사이트: `http://127.0.0.1:4173/examples/tarot-site/?v=20260516-001`
 
-Phase 4에서 해야 할 일은 아래와 같습니다.
+## 8. GitHub 상태
 
-- `manuscript/` 원고를 읽을 수 있는 반응형 웹북으로 구성합니다.
-- `prompts/` 원문을 웹북의 프롬프트 박스와 연결합니다.
-- 프롬프트 박스는 3줄 미리보기와 우측 상단 `복사하기` 버튼을 구현합니다.
-- 이미지 자리는 우선 placeholder로 연결하되, 이후 Playwright 캡처 이미지로 채울 구조를 마련합니다.
-- noCache, CSS/JS/이미지 버전 쿼리, 빌드 번호를 반영합니다.
-- 모바일 390px, 모바일 430px, 태블릿 768px, 데스크톱 1280px 기준 반응형을 고려합니다.
+- 레포: `https://github.com/y-soo82/vibecoding-gpt-book`
+- `main` 브랜치 첫 push를 완료했습니다.
+- Phase 5, Phase 6 변경분은 아직 로컬에만 있고 커밋/push 전입니다.
 
-## 8. 아직 하지 않은 일
+## 9. 다음 Phase
 
-- 실제 웹북 구현
-- 실제 이미지 캡처
-- Playwright 캡처 이미지 생성
+다음 단계는 **Phase 7: 실제 캡처 이미지 생성**입니다.
+
+Phase 7에서 해야 할 일은 아래와 같습니다.
+
+- 실제 캡처 이미지 98개 중 자동화 가능 컷부터 `webbook/images/`에 생성합니다.
+- 첫 목표는 웹북 자동 캡처 20개와 예제 사이트 자동 캡처 34개입니다.
+- ChatGPT/GitHub 관련 30개는 수동 확인 필요 컷 또는 mock 대체 계획을 확정한 뒤 진행합니다.
+- 캡처 이미지는 Playwright로 직접 실행해 생성합니다.
+- 이미지 번호는 실제 UI 글자보다 약 20% 작게 배치하고, 버튼, 입력칸, 본문 글자를 가리지 않게 합니다.
+
+## 10. 아직 하지 않은 일
+
+- 실제 98개 이미지 전부 생성
+- `webbook/images/`에 최종 캡처 반영
 - GitHub Pages 외부 배포
+- 캐시 무효화 외부 확인
 - Sigil EPUB 변환
 - Reviewer/Verifier 최종 검수
+- Phase 5/6 변경분 커밋 및 push
 
-## 9. 다음 작업 시작 시 읽을 파일
+## 11. 다음 작업 시작 시 읽을 파일
 
 다음 작업자는 아래 순서로 읽으면 됩니다.
 
 1. `vibecoding/AGENTS.md`
 2. `vibecoding/1/gpt/reports/current_status.md`
-3. `vibecoding/1/gpt/plan/프롬프트설계.md`
-4. `vibecoding/1/gpt/manuscript/`
-5. `vibecoding/1/gpt/prompts/`
+3. `vibecoding/1/gpt/reports/capture-plan.md`
+4. `vibecoding/1/gpt/reports/capture-placeholders.json`
+5. `vibecoding/1/gpt/webbook/`
+6. `vibecoding/1/gpt/examples/`
+7. `vibecoding/1/gpt/manuscript/`
+8. `vibecoding/1/gpt/prompts/`
 
-이 파일을 기준으로 Phase 4를 시작하면 됩니다.
+이 파일을 기준으로 Phase 7을 시작하면 됩니다.

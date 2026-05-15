@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>오늘의 카드 리딩</title>
+    <link rel="stylesheet" href="./assets/style.css?v=20260516-001">
+  </head>
+  <body>
+    <!-- build: 20260516-001 -->
+    <main class="tarot-app">
+      <section class="screen is-active" data-screen="home" aria-label="메인 화면">
+        <div class="intro-copy">
+          <p class="eyebrow">타로카드 리딩 웹사이트</p>
+          <h1>오늘의 카드 리딩</h1>
+          <p>궁금한 주제를 고르고 질문을 적은 뒤, 카드 3장을 뽑아 부드러운 조언을 받아 보세요.</p>
+          <button class="primary-button" data-action="start">시작하기</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="topic" aria-label="주제 선택 화면">
+        <div class="section-heading">
+          <p class="eyebrow">1단계</p>
+          <h2>어떤 주제로 볼까요?</h2>
+        </div>
+        <div class="topic-grid" id="topicGrid"></div>
+      </section>
+
+      <section class="screen" data-screen="question" aria-label="질문 입력 화면">
+        <div class="section-heading">
+          <p class="eyebrow">2단계</p>
+          <h2>질문을 한 문장으로 적어 주세요</h2>
+          <p id="selectedTopicText"></p>
+        </div>
+        <label class="question-box">
+          <span>질문</span>
+          <textarea id="questionInput" rows="4" placeholder="오늘 제가 가장 신경 써야 할 것은 무엇인가요?"></textarea>
+        </label>
+        <button class="primary-button" data-action="questionNext">카드 뽑으러 가기</button>
+        <p class="helper" id="questionHelper" role="status"></p>
+      </section>
+
+      <section class="screen" data-screen="spread" aria-label="카드 뽑기 화면">
+        <div class="section-heading">
+          <p class="eyebrow">3단계</p>
+          <h2>마음이 가는 카드 3장을 골라 주세요</h2>
+          <p id="cardCounter">0장을 선택했습니다.</p>
+        </div>
+        <div class="card-grid" id="cardGrid"></div>
+        <button class="primary-button" data-action="showResult" disabled>결과 보기</button>
+      </section>
+
+      <section class="screen" data-screen="result" aria-label="결과 화면">
+        <div class="section-heading">
+          <p class="eyebrow">리딩 결과</p>
+          <h2 id="resultTitle">오늘의 조언입니다</h2>
+          <p id="resultQuestion"></p>
+        </div>
+        <div class="result-grid" id="resultGrid"></div>
+        <article class="summary-box">
+          <h3>전체 조언</h3>
+          <p id="summaryText"></p>
+        </article>
+        <div class="button-row">
+          <button class="secondary-button" data-action="restart">다시 뽑기</button>
+          <button class="primary-button" data-action="saveHistory">최근 이력에 남기기</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="history" aria-label="최근 이력 화면">
+        <div class="section-heading">
+          <p class="eyebrow">최근 이력</p>
+          <h2>방금 본 리딩을 다시 확인해 보세요</h2>
+        </div>
+        <div id="historyList" class="history-list"></div>
+        <button class="primary-button" data-action="restart">처음으로 돌아가기</button>
+      </section>
+    </main>
+
+    <dialog id="cardDialog" class="card-dialog">
+      <button class="close-dialog" type="button" data-action="closeDialog">닫기</button>
+      <img id="dialogImage" src="./assets/cards/the-fool.png?v=20260516-001" alt="바보 카드">
+      <h3 id="dialogTitle"></h3>
+      <p id="dialogText"></p>
+    </dialog>
+
+    <script src="./assets/app.js?v=20260516-001"></script>
+  </body>
+</html>
