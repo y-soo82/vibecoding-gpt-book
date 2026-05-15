@@ -1,4 +1,4 @@
-const BUILD_VERSION = "20260515-001";
+const BUILD_VERSION = "20260516-pub-001";
 
 const CHAPTERS = [
   { id: "00_intro", title: "머리말. 이 책을 따라가기 전에", path: "../manuscript/00_intro.md" },
@@ -251,7 +251,22 @@ function bindPromptButtons(prompts) {
       if (!prompt) return;
 
       try {
-        await navigator.clipboard.writeText(prompt.full);
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(prompt.full);
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.value = prompt.full;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.top = "-1000px";
+          textarea.style.left = "-1000px";
+          document.body.appendChild(textarea);
+          textarea.focus();
+          textarea.select();
+          textarea.setSelectionRange(0, textarea.value.length);
+          document.execCommand("copy");
+          textarea.remove();
+        }
         copyButton.textContent = "복사됨";
         copyButton.classList.add("is-copied");
         window.setTimeout(() => {

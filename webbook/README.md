@@ -19,7 +19,7 @@ python3 -m http.server 4173
 그다음 아래 주소를 엽니다.
 
 ```text
-http://127.0.0.1:4173/webbook/?v=20260515-001
+http://127.0.0.1:4173/webbook/?v=20260516-pub-001
 ```
 
 ## 구현 기준
@@ -27,9 +27,9 @@ http://127.0.0.1:4173/webbook/?v=20260515-001
 - 프롬프트 박스는 앞 3줄 미리보기만 보여 줍니다.
 - `복사하기` 버튼을 누르면 프롬프트 전문이 클립보드에 복사됩니다.
 - `전체 보기` 버튼으로 전문을 펼칠 수 있습니다.
-- 이미지 파일이 아직 없으면 깨진 이미지 대신 `Playwright 캡처 예정` placeholder가 보입니다.
-- 이후 모든 캡처 이미지는 Codex가 Playwright로 직접 실행해 생성합니다.
-- 실제 PNG 파일이 `webbook/images/`에 들어오면 같은 경로에서 자동으로 실제 이미지가 표시됩니다.
+- 이미지 98개는 Codex가 Playwright로 직접 실행해 생성했습니다.
+- 실제 계정 정보가 필요한 ChatGPT/GitHub 화면은 출판용 mock 화면으로 대체했습니다.
+- 이미지 파일이 없을 때만 깨진 이미지 대신 `Playwright 캡처 예정` placeholder가 보입니다.
 - noCache 메타 태그와 버전 쿼리를 적용합니다.
 
 ## 검증 뷰포트
@@ -41,7 +41,6 @@ http://127.0.0.1:4173/webbook/?v=20260515-001
 
 ## 아직 하지 않은 일
 
-- 실제 캡처 이미지 생성
-- GitHub Pages 외부 배포
 - Sigil EPUB 변환
-- Reviewer/Verifier 최종 검수
+- EPUB Validate
+- 전자책 리더 앱 미리보기

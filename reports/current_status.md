@@ -90,6 +90,30 @@
 - 가로 넘침은 없습니다.
 - `phase6-*` 캡처 스크린샷을 생성했습니다.
 
+### Phase 7. 1차 자동 캡처 완료
+
+- 웹북 자동 캡처 20개와 예제 사이트 자동 캡처 34개를 생성했습니다.
+- `webbook/images/`에 54개 이미지를 추가했습니다.
+- `reports/phase7-capture-report.md`를 생성했습니다.
+- 390px, 430px, 768px, 1280px에서 실제 이미지 54개, 깨진 이미지 0개, 가로 넘침 없음으로 검증했습니다.
+
+### Phase 8~9. 남은 이미지 완성 및 mock 대체 완료
+
+- Phase 8 자료 화면 자동 캡처 14개를 생성했습니다.
+- Phase 9 수동 확인 필요 컷 30개를 출판용 mock 화면으로 대체 생성했습니다.
+- 실제 ChatGPT/GitHub 계정, 이메일, 토큰, 개인 저장소 이름은 캡처하지 않았습니다.
+- `webbook/images/` PNG 수는 98개입니다.
+- 남은 이미지 자리는 0개입니다.
+- `reports/phase8-9-image-completion-report.md`를 생성했습니다.
+
+### Phase 10~13. 출판 품질 점검 및 EPUB 준비 완료
+
+- 원고 출판 품질 점검을 진행했습니다.
+- 웹북 출판 품질 점검을 진행했습니다.
+- Sigil EPUB 변환 준비 문서를 작성했습니다.
+- Reviewer/Verifier 최종 검수 보고서를 작성했습니다.
+- 관련 문서는 `reports/publication-quality-report.md`, `reports/reviewer-verifier-final-report.md`, `epub/sigil-epub-preflight.md`입니다.
+
 ## 5. 생성된 주요 파일 목록
 
 ### plan 문서
@@ -143,6 +167,15 @@
 - `reports/current_status.md`
 - `reports/capture-plan.md`
 - `reports/capture-placeholders.json`
+- `reports/phase7-capture-report.md`
+- `reports/phase8-9-image-completion-report.md`
+- `reports/publication-quality-report.md`
+- `reports/reviewer-verifier-final-report.md`
+- `reports/phase10-14-publication-report.md`
+
+### epub 준비 문서
+
+- `epub/sigil-epub-preflight.md`
 
 ### examples 예제 사이트
 
@@ -164,45 +197,47 @@
 - 프롬프트 ID 매칭: 원고 24개와 prompts 24개 1:1 일치
 - 미리보기 3줄과 전문 앞 3줄 일치 검수: PASS
 - 캡처 대상 이미지 자리: 98개
+- 실제 생성 이미지: 98개
+- 남은 이미지 자리: 0개
 - 자동화 가능 컷: 68개
-- 수동 확인 필요 컷: 30개
+- 수동 확인 필요 컷 mock 대체: 30개
 - 첫 웹사이트 예제: 1개
 - 타로카드 리딩 웹사이트 예제: 1개
 - 타로 카드 이미지: 12장
+- 최신 빌드 번호: `20260516-pub-001`
 
 ## 7. 현재 로컬 URL
 
-- 웹북: `http://127.0.0.1:4173/webbook/?v=20260515-001`
-- 첫 웹사이트: `http://127.0.0.1:4173/examples/first-site/?v=20260516-001`
-- 타로카드 리딩 웹사이트: `http://127.0.0.1:4173/examples/tarot-site/?v=20260516-001`
+- 웹북: `http://127.0.0.1:4173/webbook/?v=20260516-pub-001`
+- 첫 웹사이트: `http://127.0.0.1:4173/examples/first-site/?v=20260516-pub-001`
+- 타로카드 리딩 웹사이트: `http://127.0.0.1:4173/examples/tarot-site/?v=20260516-pub-001`
 
 ## 8. GitHub 상태
 
 - 레포: `https://github.com/y-soo82/vibecoding-gpt-book`
 - `main` 브랜치 첫 push를 완료했습니다.
-- Phase 5, Phase 6 변경분은 아직 로컬에만 있고 커밋/push 전입니다.
+- GitHub Pages URL은 `https://y-soo82.github.io/vibecoding-gpt-book/`입니다.
+- 최신 출판 점검 URL은 `?v=20260516-pub-001` 쿼리로 확인합니다.
 
 ## 9. 다음 Phase
 
-다음 단계는 **Phase 7: 실제 캡처 이미지 생성**입니다.
+다음 단계는 **Sigil EPUB 실제 제작 및 출판 전 편집 판단**입니다.
 
-Phase 7에서 해야 할 일은 아래와 같습니다.
+다음에 해야 할 일은 아래와 같습니다.
 
-- 실제 캡처 이미지 98개 중 자동화 가능 컷부터 `webbook/images/`에 생성합니다.
-- 첫 목표는 웹북 자동 캡처 20개와 예제 사이트 자동 캡처 34개입니다.
-- ChatGPT/GitHub 관련 30개는 수동 확인 필요 컷 또는 mock 대체 계획을 확정한 뒤 진행합니다.
-- 캡처 이미지는 Playwright로 직접 실행해 생성합니다.
-- 이미지 번호는 실제 UI 글자보다 약 20% 작게 배치하고, 버튼, 입력칸, 본문 글자를 가리지 않게 합니다.
+- Sigil에서 실제 EPUB 파일을 제작합니다.
+- EPUB Validate를 실행합니다.
+- 전자책 리더 앱에서 이미지 크기, 목차, 프롬프트 전문 링크를 확인합니다.
+- mock 화면을 실제 서비스 캡처로 바꿀지 최종 편집 판단을 합니다.
+- 표지 최종 디자인을 확정합니다.
 
 ## 10. 아직 하지 않은 일
 
-- 실제 98개 이미지 전부 생성
-- `webbook/images/`에 최종 캡처 반영
-- GitHub Pages 외부 배포
-- 캐시 무효화 외부 확인
-- Sigil EPUB 변환
-- Reviewer/Verifier 최종 검수
-- Phase 5/6 변경분 커밋 및 push
+- Sigil EPUB 실제 파일 제작
+- EPUB Validate 실행
+- 전자책 리더 앱 미리보기
+- 표지 최종 디자인 확정
+- mock 화면을 실제 서비스 화면으로 교체할지 최종 판단
 
 ## 11. 다음 작업 시작 시 읽을 파일
 
@@ -211,10 +246,12 @@ Phase 7에서 해야 할 일은 아래와 같습니다.
 1. `vibecoding/AGENTS.md`
 2. `vibecoding/1/gpt/reports/current_status.md`
 3. `vibecoding/1/gpt/reports/capture-plan.md`
-4. `vibecoding/1/gpt/reports/capture-placeholders.json`
-5. `vibecoding/1/gpt/webbook/`
-6. `vibecoding/1/gpt/examples/`
-7. `vibecoding/1/gpt/manuscript/`
-8. `vibecoding/1/gpt/prompts/`
+4. `vibecoding/1/gpt/reports/phase8-9-image-completion-report.md`
+5. `vibecoding/1/gpt/reports/publication-quality-report.md`
+6. `vibecoding/1/gpt/reports/reviewer-verifier-final-report.md`
+7. `vibecoding/1/gpt/epub/sigil-epub-preflight.md`
+8. `vibecoding/1/gpt/webbook/`
+9. `vibecoding/1/gpt/manuscript/`
+10. `vibecoding/1/gpt/prompts/`
 
-이 파일을 기준으로 Phase 7을 시작하면 됩니다.
+이 파일을 기준으로 EPUB 제작과 출판 전 편집 판단을 시작하면 됩니다.
