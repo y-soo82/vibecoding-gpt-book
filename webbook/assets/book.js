@@ -1,4 +1,4 @@
-const BUILD_VERSION = "20260516-pub-001";
+const BUILD_VERSION = "20260516-p0-001";
 
 const CHAPTERS = [
   { id: "00_intro", title: "머리말. 이 책을 따라가기 전에", path: "../manuscript/00_intro.md" },
@@ -108,15 +108,16 @@ function renderPromptCard(lines, prompts) {
 function imageFrame(alt, src) {
   const cleanSrc = src.replace("../webbook/", "./");
   const fileName = cleanSrc.split("/").pop();
+  const caption = alt.replace(/^이미지 자리:\s*/, "").trim();
 
   return `
     <figure class="image-frame" data-image-src="${escapeHtml(cleanSrc)}">
       <div class="image-placeholder">
-        <strong>Playwright 캡처 예정</strong>
-        <span>${escapeHtml(alt.replace(/^이미지 자리:\s*/, ""))}</span>
+        <strong>이미지 준비 중</strong>
+        <span>${escapeHtml(caption)}</span>
         <code>${escapeHtml(fileName)}</code>
       </div>
-      <figcaption>${escapeHtml(alt)}</figcaption>
+      <figcaption>그림. ${escapeHtml(caption)}</figcaption>
     </figure>
   `;
 }
