@@ -1,16 +1,8 @@
-const BUILD_VERSION = "20260516-p0-001";
+const BUILD_VERSION = "20260519-chapter12-001";
 
 const CHAPTERS = [
-  { id: "00_intro", title: "머리말. 이 책을 따라가기 전에", path: "../manuscript/00_intro.md" },
-  { id: "01_ai_vibecoding", title: "Chapter 0. AI와 바이브코딩", path: "../manuscript/01_ai_vibecoding.md" },
-  { id: "02_chatgpt_ui", title: "Chapter 1. ChatGPT 대화창", path: "../manuscript/02_chatgpt_ui.md" },
-  { id: "03_first_site", title: "Chapter 2. 첫 번째 사이트", path: "../manuscript/03_first_site.md" },
-  { id: "04_github_connector_deploy", title: "Chapter 3. GitHub 연동 배포", path: "../manuscript/04_github_connector_deploy.md" },
-  { id: "05_tarot_preview", title: "Chapter 4. 타로 사이트 미리보기", path: "../manuscript/05_tarot_preview.md" },
-  { id: "06_tarot_assets", title: "Chapter 5. 타로 이미지 준비", path: "../manuscript/06_tarot_assets.md" },
-  { id: "07_tarot_build", title: "Chapter 6. 타로 사이트 만들기", path: "../manuscript/07_tarot_build.md" },
-  { id: "08_tarot_deploy", title: "Chapter 7. 타로 사이트 배포", path: "../manuscript/08_tarot_deploy.md" },
-  { id: "09_appendix", title: "부록. 막혔을 때", path: "../manuscript/09_appendix.md" }
+  { id: "01_chapter1", title: "Chapter 1. AI, LLM, 바이브코딩", path: "../manuscript/01_chapter1_current.md" },
+  { id: "02_chapter2", title: "Chapter 2. 이미지 하나로 웹사이트 만들고 배포", path: "../manuscript/02_chapter2_current.md" }
 ];
 
 const contentEl = document.querySelector("#book-content");
