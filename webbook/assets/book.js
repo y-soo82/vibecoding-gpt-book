@@ -1,8 +1,10 @@
-const BUILD_VERSION = "20260519-chapter12-001";
+const BUILD_VERSION = "20260521-ebook-001";
 
 const CHAPTERS = [
   { id: "01_chapter1", title: "Chapter 1. AI, LLM, 바이브코딩", path: "../manuscript/01_chapter1_current.md" },
-  { id: "02_chapter2", title: "Chapter 2. 이미지 하나로 웹사이트 만들고 배포", path: "../manuscript/02_chapter2_current.md" }
+  { id: "02_chapter2", title: "Chapter 2. 이미지 하나로 웹사이트 만들고 배포", path: "../manuscript/02_chapter2_current.md" },
+  { id: "03_chapter3", title: "Chapter 3. 타로앱 만들기", path: "../manuscript/03_chapter3_current.md" },
+  { id: "04_chapter4", title: "Chapter 4. 부록", path: "../manuscript/04_chapter4_current.md" }
 ];
 
 const contentEl = document.querySelector("#book-content");

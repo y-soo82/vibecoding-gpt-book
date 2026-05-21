@@ -1,12 +1,12 @@
 :root {
-  --bg: #f6f1e8;
-  --paper: #fffaf2;
-  --ink: #2b241b;
-  --muted: #72675b;
-  --line: #ded0bd;
-  --green: #286c5d;
-  --coral: #bb5b48;
-  --gold: #b88735;
+  --bg: #f7fafc;
+  --paper: #ffffff;
+  --ink: #1f2933;
+  --muted: #667085;
+  --line: #d8e3ec;
+  --green: #137b8f;
+  --coral: #e46f4a;
+  --gold: #f4b84a;
   --radius: 8px;
   color-scheme: light;
 }
@@ -35,7 +35,7 @@ body {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  grid-template-columns: minmax(0, 0.88fr) minmax(320px, 1.12fr);
   gap: 32px;
   align-items: center;
   min-height: 78vh;
@@ -78,6 +78,11 @@ h1 {
   font-weight: 800;
 }
 
+.primary-action:hover,
+.primary-action:focus {
+  background: #0f6676;
+}
+
 .hero-image {
   margin: 0;
 }
@@ -85,9 +90,11 @@ h1 {
 .hero-image img {
   display: block;
   width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 24px 60px rgba(48, 38, 24, 0.18);
+  box-shadow: 0 24px 60px rgba(19, 123, 143, 0.16);
 }
 
 .hero-image figcaption {

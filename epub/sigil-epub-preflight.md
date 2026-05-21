@@ -4,6 +4,8 @@
 
 이 문서는 바이브코딩 1차 GPT 입문서 웹북을 Sigil에서 EPUB로 옮기기 전에 확인할 항목을 정리합니다. 웹북은 복사 버튼과 동적 이미지 로딩을 포함하지만, EPUB에서는 리더 앱에 따라 JavaScript가 제한될 수 있으므로 정적 구조를 우선합니다.
 
+현재 초안 EPUB 산출물은 `epub/dist/vibecoding-gpt-book.epub`입니다. Sigil 최종 검증 전 단계의 패키지이며, Sigil에서 열어 Validate를 실행한 뒤 최종 출판본으로 확정합니다.
+
 ## EPUB 기본 구조
 
 - 제목: 바이브코딩 GPT 입문서
@@ -17,39 +19,27 @@
 
 ## 권장 XHTML 분리
 
-- `00_intro.xhtml`
-- `01_ai_vibecoding.xhtml`
-- `02_chatgpt_ui.xhtml`
-- `03_first_site.xhtml`
-- `04_github_connector_deploy.xhtml`
-- `05_tarot_preview.xhtml`
-- `06_tarot_assets.xhtml`
-- `07_tarot_build.xhtml`
-- `08_tarot_deploy.xhtml`
-- `09_appendix.xhtml`
+- `chapter1.xhtml`
+- `chapter2.xhtml`
+- `chapter3.xhtml`
+- `chapter4.xhtml`
 - `prompts.xhtml`
 
 ## 목차 기준
 
-- 머리말. 이 책을 따라가기 전에
-- Chapter 0. AI와 바이브코딩
-- Chapter 1. ChatGPT 대화창
-- Chapter 2. 첫 번째 사이트
-- Chapter 3. GitHub 연동 배포
-- Chapter 4. 타로 사이트 미리보기
-- Chapter 5. 타로 이미지 준비
-- Chapter 6. 타로 사이트 만들기
-- Chapter 7. 타로 사이트 배포
-- 부록. 막혔을 때
+- Chapter 1. AI, LLM, 바이브코딩 개요와 시장 소개
+- Chapter 2. 이미지 하나로 웹사이트 만들고 배포합니다
+- Chapter 3. 타로앱을 만듭니다
+- Chapter 4. 부록
 - 프롬프트 전문 모음
 
 ## 이미지 경로 준비
 
 - EPUB 내부 이미지는 `Images/` 폴더로 복사합니다.
-- 현재 웹북 이미지는 `webbook/images/*.png` 98개입니다.
+- 현재 웹북 이미지는 `webbook/images/*.png`를 기준으로 사용합니다.
 - XHTML에서는 `../webbook/images/...` 대신 `../Images/파일명.png` 또는 Sigil 프로젝트 구조에 맞는 상대 경로로 바꿉니다.
 - 이미지 번호는 이미 캡처 이미지 안에 포함되어 있으므로 EPUB 변환 중 별도 번호를 덧씌우지 않습니다.
-- mock 화면은 실제 ChatGPT/GitHub UI와 다를 수 있으므로 캡션 또는 앞뒤 문장에서 출판용 예시 화면임을 유지합니다.
+- ChatGPT/GitHub 로그인과 권한 화면은 최종 출판 전에 실제 캡처 또는 출판용 예시 화면 판정을 완료합니다.
 
 ## CSS 분리 기준
 
@@ -102,4 +92,3 @@
 - EPUB: 리더 앱 호환성을 위해 정적 XHTML, 정적 이미지, 내부 링크 중심으로 구성합니다.
 - 웹북: GitHub Pages 외부 URL에서 최신 상태를 확인합니다.
 - EPUB: Sigil 검증과 실제 리더 앱 미리보기로 확인합니다.
-
