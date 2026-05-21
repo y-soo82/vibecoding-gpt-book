@@ -5,9 +5,9 @@ const root = path.resolve(__dirname, "..");
 const buildVersion = "20260521-chapter-split-001";
 
 const chapters = [
-  { id: "01_chapter1", title: "Chapter 1. AI, LLM, 바이브코딩", path: "manuscript/01_chapter1_current.md", output: "chapter1.html" },
+  { id: "01_chapter1", title: "Chapter 1. AI(Artificial Intelligence), LLM(Large Language Model), 바이브코딩(vibe coding)", path: "manuscript/01_chapter1_current.md", output: "chapter1.html" },
   { id: "02_chapter2", title: "Chapter 2. 이미지 하나로 웹사이트 만들고 배포", path: "manuscript/02_chapter2_current.md", output: "chapter2.html" },
-  { id: "03_chapter3", title: "Chapter 3. 타로앱 만들기", path: "manuscript/03_chapter3_current.md", output: "chapter3.html" },
+  { id: "03_chapter3", title: "Chapter 3. 타로(tarot)앱 만들기", path: "manuscript/03_chapter3_current.md", output: "chapter3.html" },
   { id: "04_chapter4", title: "Chapter 4. 부록", path: "manuscript/04_chapter4_current.md", output: "chapter4.html" }
 ];
 
@@ -67,8 +67,8 @@ function loadPrompts() {
 }
 
 function renderPromptCard(lines, prompts) {
-  const idLine = lines.find((line) => line.includes("프롬프트 박스:")) || "";
-  const id = idLine.split("프롬프트 박스:")[1]?.trim();
+  const idLine = lines.find((line) => /프롬프트(?:\(prompt\))? 박스:/.test(line)) || "";
+  const id = idLine.split(/프롬프트(?:\(prompt\))? 박스:/)[1]?.trim();
   const prompt = prompts[id];
 
   if (!id) return "";
@@ -79,7 +79,7 @@ function renderPromptCard(lines, prompts) {
         <div class="prompt-card__header">
           <h3 class="prompt-card__title">${escapeHtml(id)}</h3>
         </div>
-        <p>프롬프트 원문을 찾지 못했습니다.</p>
+        <p>프롬프트(prompt) 원문을 찾지 못했습니다.</p>
       </section>
     `;
   }
@@ -93,7 +93,7 @@ function renderPromptCard(lines, prompts) {
       <pre class="prompt-card__preview">${escapeHtml(prompt.preview)}</pre>
       <button class="prompt-card__toggle" type="button">전체 보기</button>
       <pre class="prompt-card__full" hidden>${escapeHtml(prompt.full)}</pre>
-      <a class="prompt-card__epub-link" href="../${escapeHtml(prompt.source)}?v=${buildVersion}">프롬프트 전문 보기</a>
+      <a class="prompt-card__epub-link" href="../${escapeHtml(prompt.source)}?v=${buildVersion}">프롬프트(prompt) 전문 보기</a>
     </section>
   `;
 }
@@ -181,7 +181,7 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
     }
 
     const promptLines = [];
-    if (line.startsWith("> ") && line.includes("프롬프트 박스:")) {
+    if (line.startsWith("> ") && /프롬프트(?:\(prompt\))? 박스:/.test(line)) {
       flushParagraph(paragraph, html);
       flushList(listItems, html);
       while (i < lines.length && lines[i].startsWith("> ")) {
@@ -297,8 +297,8 @@ function renderPage({ activeOutput, pageTitle, modeLabel, description, chapterHt
     <div class="app-shell">
       <aside class="book-sidebar" aria-label="전자책 목차">
         <div class="brand-block">
-          <p class="series-label">바이브코딩</p>
-          <h1>GPT 입문서</h1>
+          <p class="series-label">바이브코딩(vibe coding)</p>
+          <h1>GPT(Generative Pre-trained Transformer) 입문서</h1>
           <p>${escapeHtml(modeLabel)}</p>
         </div>
         <nav class="mode-nav" aria-label="보기 방식">${modeNavHtml}</nav>
@@ -309,7 +309,7 @@ function renderPage({ activeOutput, pageTitle, modeLabel, description, chapterHt
         <header class="book-header">
           <div>
             <p class="eyebrow">반응형 전자책</p>
-            <h2>보면서 따라 하는 바이브코딩 입문</h2>
+            <h2>보면서 따라 하는 바이브코딩(vibe coding) 입문</h2>
             <p>${escapeHtml(description)}</p>
           </div>
           <div class="build-badge" aria-label="빌드 번호">버전 ${buildVersion}</div>
@@ -317,7 +317,7 @@ function renderPage({ activeOutput, pageTitle, modeLabel, description, chapterHt
 
         <section class="reader-note" aria-label="읽기 안내">
           <strong>읽기 안내</strong>
-          <span>위에서 아래로 계속 스크롤하면서 실제 책처럼 읽습니다. 프롬프트는 3줄만 보고 복사하기 버튼으로 전문을 복사합니다.</span>
+          <span>위에서 아래로 계속 스크롤하면서 실제 책처럼 읽습니다. 프롬프트(prompt)는 3줄만 보고 복사하기 버튼으로 전문을 복사합니다.</span>
         </section>
 
         <article id="book-content" class="book-content">
@@ -325,7 +325,7 @@ ${chapterHtml}
         </article>
 
         <footer class="book-footer">
-          <span>바이브코딩 GPT 입문서</span>
+          <span>바이브코딩(vibe coding) GPT(Generative Pre-trained Transformer) 입문서</span>
           <span>build ${buildVersion}</span>
         </footer>
       </main>
@@ -383,14 +383,14 @@ ${chapterHtml}
 const pages = [
   {
     activeOutput: "full.html",
-    pageTitle: "보면서 따라 하는 바이브코딩 입문 - 전체 스크롤판",
+    pageTitle: "보면서 따라 하는 바이브코딩(vibe coding) 입문 - 전체 스크롤판",
     modeLabel: "전체 스크롤판",
-    description: "Chapter 1부터 Chapter 4까지 한 HTML 안에 들어간 전체 확인본입니다.",
+    description: "Chapter 1부터 Chapter 4까지 한 HTML(HyperText Markup Language) 안에 들어간 전체 확인본입니다.",
     chapterHtml: renderedChapters.map((chapter) => chapter.html).join("\n")
   },
   ...renderedChapters.map((chapter, index) => ({
     activeOutput: chapter.output,
-    pageTitle: `보면서 따라 하는 바이브코딩 입문 - Chapter ${index + 1}`,
+    pageTitle: `보면서 따라 하는 바이브코딩(vibe coding) 입문 - Chapter ${index + 1}`,
     modeLabel: `Chapter ${index + 1}`,
     description: `${chapter.title}만 따로 보는 챕터별 확인본입니다.`,
     chapterHtml: chapter.html

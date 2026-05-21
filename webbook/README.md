@@ -1,11 +1,11 @@
-# 바이브코딩 1차 GPT 입문서 웹북
+# 바이브코딩(vibe coding) 1차 GPT(Generative Pre-trained Transformer) 입문서 웹북(web book)
 
 ## 목적
 
-이 폴더는 바이브코딩 1차 GPT 입문서의 반응형 웹북 초안입니다.
+이 폴더는 바이브코딩(vibe coding) 1차 GPT(Generative Pre-trained Transformer) 입문서의 반응형 웹북(web book) 초안입니다.
 
 - 원고 위치: `../manuscript/`
-- 프롬프트 원문 위치: `../prompts/`
+- 프롬프트(prompt) 원문 위치: `../prompts/`
 - 이미지 위치: `./images/`
 
 ## 실행 방법
@@ -24,23 +24,23 @@ http://127.0.0.1:4173/webbook/?v=20260516-pub-001
 
 ## 구현 기준
 
-- 프롬프트 박스는 앞 3줄 미리보기만 보여 줍니다.
-- `복사하기` 버튼을 누르면 프롬프트 전문이 클립보드에 복사됩니다.
+- 프롬프트(prompt) 박스는 앞 3줄 미리보기만 보여 줍니다.
+- `복사하기` 버튼을 누르면 프롬프트(prompt) 전문이 클립보드에 복사됩니다.
 - `전체 보기` 버튼으로 전문을 펼칠 수 있습니다.
 - 이미지 98개는 Codex가 Playwright로 직접 실행해 생성했습니다.
 - 실제 계정 정보가 필요한 ChatGPT/GitHub 화면은 출판용 mock 화면으로 대체했습니다.
-- 이미지 파일이 없을 때만 깨진 이미지 대신 `Playwright 캡처 예정` placeholder가 보입니다.
+- 이미지 파일이 없을 때만 깨진 이미지 대신 `Playwright 캡처(capture) 예정` placeholder가 보입니다.
 - noCache 메타 태그와 버전 쿼리를 적용합니다.
 
 ## 검증 뷰포트
 
-- 모바일 소형: 390px
-- 모바일 일반: 430px
+- 모바일(mobile) 소형: 390px
+- 모바일(mobile) 일반: 430px
 - 태블릿: 768px
-- 데스크톱: 1280px
+- 데스크톱(desktop): 1280px
 
 ## 아직 하지 않은 일
 
-- Sigil EPUB 변환
-- EPUB Validate
+- Sigil EPUB(Electronic Publication) 변환
+- EPUB(Electronic Publication) Validate
 - 전자책 리더 앱 미리보기
