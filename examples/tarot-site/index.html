@@ -7,16 +7,16 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>오늘의 카드 리딩</title>
-    <link rel="stylesheet" href="./assets/style.css?v=20260516-001">
+    <link rel="stylesheet" href="./assets/style.css?v=20260521-tarot-001">
   </head>
   <body>
-    <!-- build: 20260516-001 -->
+    <!-- build: 20260521-tarot-001 -->
     <main class="tarot-app">
       <section class="screen is-active" data-screen="home" aria-label="메인 화면">
         <div class="intro-copy">
           <p class="eyebrow">타로카드 리딩 웹사이트</p>
           <h1>오늘의 카드 리딩</h1>
-          <p>궁금한 주제를 고르고 질문을 적은 뒤, 카드 3장을 뽑아 부드러운 조언을 받아 보세요.</p>
+          <p>궁금한 주제를 고르고 질문을 적은 뒤, 메이저 22장 중 카드 3장을 뽑아 5영역 리딩을 받아 보세요.</p>
           <button class="primary-button" data-action="start">시작하기</button>
         </div>
       </section>
@@ -46,7 +46,7 @@
       <section class="screen" data-screen="spread" aria-label="카드 뽑기 화면">
         <div class="section-heading">
           <p class="eyebrow">3단계</p>
-          <h2>마음이 가는 카드 3장을 골라 주세요</h2>
+          <h2>메이저 22장 중 카드 3장을 골라 주세요</h2>
           <p id="cardCounter">0장을 선택했습니다.</p>
         </div>
         <div class="card-grid" id="cardGrid"></div>
@@ -82,11 +82,11 @@
 
     <dialog id="cardDialog" class="card-dialog">
       <button class="close-dialog" type="button" data-action="closeDialog">닫기</button>
-      <img id="dialogImage" src="./assets/cards/the-fool.png?v=20260516-001" alt="바보 카드">
+      <img id="dialogImage" src="./assets/cards/the-fool.png?v=20260521-tarot-001" alt="바보 카드">
       <h3 id="dialogTitle"></h3>
       <p id="dialogText"></p>
     </dialog>
 
-    <script src="./assets/app.js?v=20260516-001"></script>
+    <script src="./assets/app.js?v=20260521-tarot-001"></script>
   </body>
 </html>
