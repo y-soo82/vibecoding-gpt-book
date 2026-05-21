@@ -188,6 +188,42 @@ textarea {
   line-height: 1.28;
 }
 
+.page-heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  margin-top: 30px;
+  scroll-margin-top: 18px;
+}
+
+.page-heading h2,
+.page-heading h3 {
+  margin: 0 0 12px;
+}
+
+.page-number {
+  display: inline-flex;
+  min-width: 54px;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius);
+  background: #eff6ff;
+  color: var(--teal);
+  font-size: 0.84rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.page-number:hover,
+.page-number:focus {
+  background: #dbeafe;
+  outline: 2px solid transparent;
+}
+
 .chapter p {
   margin: 10px 0;
 }

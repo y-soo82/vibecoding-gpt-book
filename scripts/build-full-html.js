@@ -21,6 +21,8 @@ const promptFiles = [
   "prompts/repair-prompts.md"
 ];
 
+let pageNumber = 0;
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -132,6 +134,19 @@ function cleanLegacyTitle(text) {
     .replace(/^부록\.\s*/, "");
 }
 
+function nextPageHeading(level, title) {
+  pageNumber += 1;
+  const pageId = `page-${String(pageNumber).padStart(3, "0")}`;
+  const pageLabel = `P${String(pageNumber).padStart(3, "0")}`;
+
+  return `
+    <div class="page-heading" id="${pageId}">
+      <a class="page-number" href="#${pageId}" aria-label="${pageLabel}">${pageLabel}</a>
+      <h${level}>${inlineMarkdown(title)}</h${level}>
+    </div>
+  `;
+}
+
 function markdownToHtml(markdown, prompts, chapterTitle) {
   const lines = markdown.split(/\r?\n/);
   const html = [];
@@ -198,7 +213,11 @@ function markdownToHtml(markdown, prompts, chapterTitle) {
         continue;
       }
       if (level === 1) {
-        html.push(`<h2>${inlineMarkdown(cleanLegacyTitle(title))}</h2>`);
+        html.push(nextPageHeading(2, cleanLegacyTitle(title)));
+        continue;
+      }
+      if (level === 2 || level === 3) {
+        html.push(nextPageHeading(level, title));
         continue;
       }
       html.push(`<h${level}>${inlineMarkdown(title)}</h${level}>`);
