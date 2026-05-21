@@ -99,6 +99,28 @@ textarea {
   margin-top: 18px;
 }
 
+.mode-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.mode-nav a {
+  display: block;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 800;
+  background: #fff;
+}
+
 .chapter-nav a {
   display: block;
   padding: 10px 12px;
@@ -109,9 +131,18 @@ textarea {
 }
 
 .chapter-nav a:hover,
-.chapter-nav a:focus {
+.chapter-nav a:focus,
+.mode-nav a:hover,
+.mode-nav a:focus {
   background: var(--paper);
   outline: 2px solid transparent;
+}
+
+.chapter-nav a.is-active,
+.mode-nav a.is-active {
+  background: var(--teal-soft);
+  border-color: #b9d9d2;
+  color: var(--teal);
 }
 
 .book-main {
@@ -376,6 +407,10 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .mode-nav {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
   .book-main {
     padding: 18px;
   }
@@ -388,6 +423,10 @@ textarea {
 
   .chapter-nav {
     grid-template-columns: 1fr;
+  }
+
+  .mode-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .book-main {

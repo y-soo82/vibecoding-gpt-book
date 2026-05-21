@@ -2,13 +2,13 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const buildVersion = "20260521-fullbook-001";
+const buildVersion = "20260521-chapter-split-001";
 
 const chapters = [
-  { id: "01_chapter1", title: "Chapter 1. AI, LLM, 바이브코딩", path: "manuscript/01_chapter1_current.md" },
-  { id: "02_chapter2", title: "Chapter 2. 이미지 하나로 웹사이트 만들고 배포", path: "manuscript/02_chapter2_current.md" },
-  { id: "03_chapter3", title: "Chapter 3. 타로앱 만들기", path: "manuscript/03_chapter3_current.md" },
-  { id: "04_chapter4", title: "Chapter 4. 부록", path: "manuscript/04_chapter4_current.md" }
+  { id: "01_chapter1", title: "Chapter 1. AI, LLM, 바이브코딩", path: "manuscript/01_chapter1_current.md", output: "chapter1.html" },
+  { id: "02_chapter2", title: "Chapter 2. 이미지 하나로 웹사이트 만들고 배포", path: "manuscript/02_chapter2_current.md", output: "chapter2.html" },
+  { id: "03_chapter3", title: "Chapter 3. 타로앱 만들기", path: "manuscript/03_chapter3_current.md", output: "chapter3.html" },
+  { id: "04_chapter4", title: "Chapter 4. 부록", path: "manuscript/04_chapter4_current.md", output: "chapter4.html" }
 ];
 
 const promptFiles = [
@@ -20,8 +20,6 @@ const promptFiles = [
   "prompts/tarot-result.md",
   "prompts/repair-prompts.md"
 ];
-
-let pageNumber = 0;
 
 function escapeHtml(value) {
   return String(value)
@@ -134,10 +132,10 @@ function cleanLegacyTitle(text) {
     .replace(/^부록\.\s*/, "");
 }
 
-function nextPageHeading(level, title) {
-  pageNumber += 1;
-  const pageId = `page-${String(pageNumber).padStart(3, "0")}`;
-  const pageLabel = `P${String(pageNumber).padStart(3, "0")}`;
+function nextPageHeading(level, title, pageState) {
+  pageState.number += 1;
+  const pageId = `page-${String(pageState.number).padStart(3, "0")}`;
+  const pageLabel = `P${String(pageState.number).padStart(3, "0")}`;
 
   return `
     <div class="page-heading" id="${pageId}">
@@ -147,7 +145,7 @@ function nextPageHeading(level, title) {
   `;
 }
 
-function markdownToHtml(markdown, prompts, chapterTitle) {
+function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
   const lines = markdown.split(/\r?\n/);
   const html = [];
   const paragraph = [];
@@ -213,11 +211,11 @@ function markdownToHtml(markdown, prompts, chapterTitle) {
         continue;
       }
       if (level === 1) {
-        html.push(nextPageHeading(2, cleanLegacyTitle(title)));
+        html.push(nextPageHeading(2, cleanLegacyTitle(title), pageState));
         continue;
       }
       if (level === 2 || level === 3) {
-        html.push(nextPageHeading(level, title));
+        html.push(nextPageHeading(level, title, pageState));
         continue;
       }
       html.push(`<h${level}>${inlineMarkdown(title)}</h${level}>`);
@@ -239,21 +237,50 @@ function markdownToHtml(markdown, prompts, chapterTitle) {
   return html.join("\n");
 }
 
-function renderChapter(chapter, prompts) {
+function renderChapter(chapter, prompts, pageState) {
   const markdown = fs.readFileSync(path.join(root, chapter.path), "utf8");
   return `
     <section id="chapter-${chapter.id}" class="chapter" data-chapter="${escapeHtml(chapter.id)}">
       <h1>${escapeHtml(chapter.title)}</h1>
-      ${markdownToHtml(markdown, prompts, chapter.title)}
+      ${markdownToHtml(markdown, prompts, chapter.title, pageState)}
     </section>
   `;
 }
 
 const prompts = loadPrompts();
-const chapterHtml = chapters.map((chapter) => renderChapter(chapter, prompts)).join("\n");
-const navHtml = chapters.map((chapter) => `<a href="#chapter-${escapeHtml(chapter.id)}">${escapeHtml(chapter.title)}</a>`).join("\n");
+const pageState = { number: 0 };
+const renderedChapters = chapters.map((chapter) => ({
+  ...chapter,
+  html: renderChapter(chapter, prompts, pageState)
+}));
 
-const html = `<!doctype html>
+function buildModeNav(activeOutput) {
+  const modes = [
+    { output: "full.html", title: "전체" },
+    ...chapters.map((chapter, index) => ({ output: chapter.output, title: `Chapter ${index + 1}` }))
+  ];
+
+  return modes.map((mode) => {
+    const active = mode.output === activeOutput ? " is-active" : "";
+    return `<a class="${active.trim()}" href="./${escapeHtml(mode.output)}?v=${buildVersion}">${escapeHtml(mode.title)}</a>`;
+  }).join("\n");
+}
+
+function buildChapterNav(activeOutput) {
+  return chapters.map((chapter) => {
+    const active = chapter.output === activeOutput ? " is-active" : "";
+    const href = activeOutput === "full.html"
+      ? `#chapter-${escapeHtml(chapter.id)}`
+      : `./${escapeHtml(chapter.output)}?v=${buildVersion}`;
+    return `<a class="${active.trim()}" href="${href}">${escapeHtml(chapter.title)}</a>`;
+  }).join("\n");
+}
+
+function renderPage({ activeOutput, pageTitle, modeLabel, description, chapterHtml }) {
+  const modeNavHtml = buildModeNav(activeOutput);
+  const navHtml = buildChapterNav(activeOutput);
+
+  return `<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="utf-8">
@@ -261,7 +288,7 @@ const html = `<!doctype html>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>보면서 따라 하는 바이브코딩 입문 - 전체 스크롤판</title>
+    <title>${escapeHtml(pageTitle)}</title>
     <link rel="stylesheet" href="./assets/book.css?v=${buildVersion}">
   </head>
   <body>
@@ -272,8 +299,9 @@ const html = `<!doctype html>
         <div class="brand-block">
           <p class="series-label">바이브코딩</p>
           <h1>GPT 입문서</h1>
-          <p>전체 스크롤판</p>
+          <p>${escapeHtml(modeLabel)}</p>
         </div>
+        <nav class="mode-nav" aria-label="보기 방식">${modeNavHtml}</nav>
         <nav id="chapter-nav" class="chapter-nav">${navHtml}</nav>
       </aside>
 
@@ -282,7 +310,7 @@ const html = `<!doctype html>
           <div>
             <p class="eyebrow">반응형 전자책</p>
             <h2>보면서 따라 하는 바이브코딩 입문</h2>
-            <p>전체 본문이 한 HTML 안에 들어간 스크롤 확인본입니다.</p>
+            <p>${escapeHtml(description)}</p>
           </div>
           <div class="build-badge" aria-label="빌드 번호">버전 ${buildVersion}</div>
         </header>
@@ -350,6 +378,27 @@ ${chapterHtml}
   </body>
 </html>
 `;
+}
 
-fs.writeFileSync(path.join(root, "webbook", "full.html"), html);
-console.log(`Generated webbook/full.html (${Buffer.byteLength(html)} bytes)`);
+const pages = [
+  {
+    activeOutput: "full.html",
+    pageTitle: "보면서 따라 하는 바이브코딩 입문 - 전체 스크롤판",
+    modeLabel: "전체 스크롤판",
+    description: "Chapter 1부터 Chapter 4까지 한 HTML 안에 들어간 전체 확인본입니다.",
+    chapterHtml: renderedChapters.map((chapter) => chapter.html).join("\n")
+  },
+  ...renderedChapters.map((chapter, index) => ({
+    activeOutput: chapter.output,
+    pageTitle: `보면서 따라 하는 바이브코딩 입문 - Chapter ${index + 1}`,
+    modeLabel: `Chapter ${index + 1}`,
+    description: `${chapter.title}만 따로 보는 챕터별 확인본입니다.`,
+    chapterHtml: chapter.html
+  }))
+];
+
+for (const page of pages) {
+  const html = renderPage(page);
+  fs.writeFileSync(path.join(root, "webbook", page.activeOutput), html);
+  console.log(`Generated webbook/${page.activeOutput} (${Buffer.byteLength(html)} bytes)`);
+}
