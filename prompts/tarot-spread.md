@@ -27,6 +27,6 @@
 
 ### 사용 위치
 
-- 원고 파일: `07_tarot_build.md`
-- 장: Chapter 6
-- 페이지: 10페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 카드 뽑기 화면 만들기

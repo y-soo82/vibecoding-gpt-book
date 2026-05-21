@@ -27,9 +27,9 @@
 
 ### 사용 위치
 
-- 원고 파일: `06_tarot_assets.md`
-- 장: Chapter 5
-- 페이지: 3페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 샘플 카드 1 만들기
 
 ## tarot-card-sample-2
 
@@ -58,9 +58,9 @@
 
 ### 사용 위치
 
-- 원고 파일: `06_tarot_assets.md`
-- 장: Chapter 5
-- 페이지: 5페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 샘플 카드 2 만들기
 
 ## tarot-design
 
@@ -90,9 +90,9 @@
 
 ### 사용 위치
 
-- 원고 파일: `07_tarot_build.md`
-- 장: Chapter 6
-- 페이지: 2페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 공통 디자인 약속 정하기
 
 ## tarot-main
 
@@ -121,9 +121,9 @@
 
 ### 사용 위치
 
-- 원고 파일: `07_tarot_build.md`
-- 장: Chapter 6
-- 페이지: 4페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 메인 화면 만들기
 
 ## tarot-card-detail
 
@@ -151,9 +151,9 @@
 
 ### 사용 위치
 
-- 원고 파일: `07_tarot_build.md`
-- 장: Chapter 6
-- 페이지: 15페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 카드 상세 보기 만들기
 
 ## tarot-history
 
@@ -181,6 +181,6 @@
 
 ### 사용 위치
 
-- 원고 파일: `07_tarot_build.md`
-- 장: Chapter 6
-- 페이지: 17페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 최근 이력 화면 만들기

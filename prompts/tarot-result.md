@@ -27,9 +27,9 @@
 
 ### 사용 위치
 
-- 원고 파일: `07_tarot_build.md`
-- 장: Chapter 6
-- 페이지: 13페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 결과 화면 만들기
 
 ## tarot-mobile-fix
 
@@ -58,6 +58,6 @@
 
 ### 사용 위치
 
-- 원고 파일: `07_tarot_build.md`
-- 장: Chapter 6
-- 페이지: 19페이지
+- 원고 파일: `03_chapter3_current.md`
+- 장: Chapter 3
+- 위치: 휴대전화 화면에 맞게 다듬기
