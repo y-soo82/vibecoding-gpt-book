@@ -17,7 +17,6 @@
 
 ### 2페이지. ChatGPT가 엉뚱한 답을 줄 때
 
-![이미지 자리: 엉뚱한 답변을 바로잡는 프롬프트(prompt) 박스](../webbook/images/ch09_02_wrong_answer_prompt.png)
 
 ChatGPT가 책과 다른 방향으로 답할 수 있습니다.  
 그럴 때는 “책의 목표는 이것입니다”라고 다시 기준을 알려 주면 됩니다.
