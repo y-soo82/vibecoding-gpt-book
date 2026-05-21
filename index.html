@@ -69,7 +69,7 @@
 
       .link-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
         gap: 14px;
         margin-top: 28px;
       }
@@ -125,6 +125,10 @@
         <h1>보면서 따라 하는 바이브코딩 입문</h1>
         <p class="lead">이미지 하나로 첫 웹사이트를 만들고, 기존 org 기준 타로앱 결과물까지 따라가는 반응형 웹 전자책 확인본입니다.</p>
         <div class="link-grid">
+          <a href="./webbook/full.html?v=20260521-fullbook-001">
+            <strong>전체 스크롤판</strong>
+            <span>본문 전체가 한 HTML 안에 들어간 책 형태로 위에서 아래까지 읽습니다.</span>
+          </a>
           <a href="./webbook/?v=20260521-ebook-001">
             <strong>전자책 웹북</strong>
             <span>4챕터 구조의 출판 확인본을 읽고 프롬프트 복사 흐름을 확인합니다.</span>
