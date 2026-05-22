@@ -256,7 +256,7 @@ const renderedChapters = chapters.map((chapter) => ({
 
 function buildModeNav(activeOutput) {
   const modes = [
-    { output: "full.html", title: "전체" },
+    { output: "index.html", title: "전체" },
     ...chapters.map((chapter, index) => ({ output: chapter.output, title: `Chapter ${index + 1}` }))
   ];
 
@@ -269,7 +269,7 @@ function buildModeNav(activeOutput) {
 function buildChapterNav(activeOutput) {
   return chapters.map((chapter) => {
     const active = chapter.output === activeOutput ? " is-active" : "";
-    const href = activeOutput === "full.html"
+    const href = activeOutput === "index.html" || activeOutput === "full.html"
       ? `#chapter-${escapeHtml(chapter.id)}`
       : `./${escapeHtml(chapter.output)}?v=${buildVersion}`;
     return `<a class="${active.trim()}" href="${href}">${escapeHtml(chapter.title)}</a>`;
@@ -382,7 +382,7 @@ ${chapterHtml}
 
 const pages = [
   {
-    activeOutput: "full.html",
+    activeOutput: "index.html",
     pageTitle: "보면서 따라 하는 바이브코딩(vibe coding) 입문 - 전체 스크롤판",
     modeLabel: "전체 스크롤판",
     description: "Chapter 1부터 Chapter 4까지 한 HTML(HyperText Markup Language) 안에 들어간 전체 확인본입니다.",
@@ -402,3 +402,7 @@ for (const page of pages) {
   fs.writeFileSync(path.join(root, "webbook", page.activeOutput), html);
   console.log(`Generated webbook/${page.activeOutput} (${Buffer.byteLength(html)} bytes)`);
 }
+
+const indexHtml = fs.readFileSync(path.join(root, "webbook", "index.html"), "utf8");
+fs.writeFileSync(path.join(root, "webbook", "full.html"), indexHtml);
+console.log(`Generated webbook/full.html (${Buffer.byteLength(indexHtml)} bytes, index alias)`);
