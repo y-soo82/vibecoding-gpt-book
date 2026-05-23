@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const buildVersion = "20260523-abbr-001";
+const buildVersion = "20260523-page-title-001";
 
 const chapters = [
   { id: "01_chapter1", title: "Chapter 1. AI, LLM, 바이브코딩", path: "manuscript/01_chapter1_current.md", output: "chapter1.html" },

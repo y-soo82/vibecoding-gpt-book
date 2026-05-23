@@ -1,8 +1,8 @@
-# Chapter 1. AI(Artificial Intelligence), LLM(Large Language Model), 바이브코딩(vibe coding) 개요와 시장 소개
+# Chapter 1. AI, LLM, 바이브코딩
 
 ## 이 책은 무엇을 만드는 책인가요
 
-이 책은 바이브코딩 입문책입니다.
+이 책은 AI(Artificial Intelligence), LLM(Large Language Model), 바이브코딩(vibe coding)을 생활 속 도구로 이해하고 직접 결과물을 만들어 보는 입문책입니다.
 
 여러분이 이 책을 따라가며 최종적으로 만나게 될 결과는 타로(tarot) 사이트입니다. 책에 실리는 HTML(HyperText Markup Language) 결과 캡처와 최대한 같은 기능, 화면 흐름, UI(User Interface), UX(User Experience)를 목표로 합니다.
 
