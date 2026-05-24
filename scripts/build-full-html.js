@@ -2,10 +2,10 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const buildVersion = "20260523-page-title-001";
+const buildVersion = "20260523-chapter1-ai-001";
 
 const chapters = [
-  { id: "01_chapter1", title: "Chapter 1. AI, LLM, 바이브코딩", path: "manuscript/01_chapter1_current.md", output: "chapter1.html" },
+  { id: "01_chapter1", title: "Chapter 1. AI, LLM, AI 서비스, 바이브코딩 쉽게 이해하기", path: "manuscript/01_chapter1_current.md", output: "chapter1.html" },
   { id: "02_chapter2", title: "Chapter 2. 이미지 하나로 웹사이트 만들고 배포", path: "manuscript/02_chapter2_current.md", output: "chapter2.html" },
   { id: "03_chapter3", title: "Chapter 3. 타로앱 만들기", path: "manuscript/03_chapter3_current.md", output: "chapter3.html" },
   { id: "04_chapter4", title: "Chapter 4. 부록", path: "manuscript/04_chapter4_current.md", output: "chapter4.html" }
@@ -126,6 +126,36 @@ function flushList(listItems, html) {
   listItems.length = 0;
 }
 
+function flushTable(tableRows, html) {
+  if (!tableRows.length) return;
+  const rows = tableRows
+    .map((line) => line.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim()))
+    .filter((cells) => !cells.every((cell) => /^:?-{3,}:?$/.test(cell)));
+
+  if (!rows.length) {
+    tableRows.length = 0;
+    return;
+  }
+
+  const [header, ...bodyRows] = rows;
+  html.push('<table class="book-table">');
+  html.push("<thead><tr>");
+  for (const cell of header) {
+    html.push(`<th>${inlineMarkdown(cell)}</th>`);
+  }
+  html.push("</tr></thead>");
+  html.push("<tbody>");
+  for (const row of bodyRows) {
+    html.push("<tr>");
+    for (const cell of row) {
+      html.push(`<td>${inlineMarkdown(cell)}</td>`);
+    }
+    html.push("</tr>");
+  }
+  html.push("</tbody></table>");
+  tableRows.length = 0;
+}
+
 function cleanLegacyTitle(text) {
   return text
     .replace(/^Chapter\s+\d+\.\s*/i, "")
@@ -150,6 +180,7 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
   const html = [];
   const paragraph = [];
   const listItems = [];
+  const tableRows = [];
   let inFence = false;
   let fenceLines = [];
 
@@ -164,6 +195,7 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
       } else {
         flushParagraph(paragraph, html);
         flushList(listItems, html);
+        flushTable(tableRows, html);
         inFence = true;
       }
       continue;
@@ -177,6 +209,14 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
     if (!line.trim()) {
       flushParagraph(paragraph, html);
       flushList(listItems, html);
+      flushTable(tableRows, html);
+      continue;
+    }
+
+    if (/^\|.+\|$/.test(line.trim())) {
+      flushParagraph(paragraph, html);
+      flushList(listItems, html);
+      tableRows.push(line);
       continue;
     }
 
@@ -184,6 +224,7 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
     if (line.startsWith("> ") && /프롬프트(?:\(prompt\))? 박스:/.test(line)) {
       flushParagraph(paragraph, html);
       flushList(listItems, html);
+      flushTable(tableRows, html);
       while (i < lines.length && lines[i].startsWith("> ")) {
         promptLines.push(lines[i].replace(/^>\s?/, ""));
         i += 1;
@@ -197,6 +238,7 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
     if (imageMatch) {
       flushParagraph(paragraph, html);
       flushList(listItems, html);
+      flushTable(tableRows, html);
       html.push(imageFrame(imageMatch[1], imageMatch[2]));
       continue;
     }
@@ -205,6 +247,7 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
     if (headingMatch) {
       flushParagraph(paragraph, html);
       flushList(listItems, html);
+      flushTable(tableRows, html);
       const level = headingMatch[1].length;
       const title = headingMatch[2].trim();
       if (level === 1 && title === chapterTitle) {
@@ -225,6 +268,7 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
     const listMatch = line.match(/^-\s+(.*)$/);
     if (listMatch) {
       flushParagraph(paragraph, html);
+      flushTable(tableRows, html);
       listItems.push(listMatch[1]);
       continue;
     }
@@ -234,6 +278,7 @@ function markdownToHtml(markdown, prompts, chapterTitle, pageState) {
 
   flushParagraph(paragraph, html);
   flushList(listItems, html);
+  flushTable(tableRows, html);
   return html.join("\n");
 }
 

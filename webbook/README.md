@@ -10,7 +10,7 @@
 
 ## 실행 방법
 
-`vibecoding/1/gpt` 폴더에서 로컬 서버를 실행합니다.
+`vibecoding/1` 폴더에서 로컬 서버를 실행합니다.
 
 ```bash
 python3 -m http.server 4173

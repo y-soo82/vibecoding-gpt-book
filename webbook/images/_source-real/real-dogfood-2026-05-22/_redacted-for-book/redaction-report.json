@@ -1,0 +1,86 @@
+[
+  {
+    "source": "01_chatgpt_logged_in_before_attach.jpg",
+    "output": "01_chatgpt_logged_in_before_attach_redacted.jpg",
+    "width": 1063,
+    "height": 632,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "03_new_tab_after_real_upload.jpg",
+    "output": "03_new_tab_after_real_upload_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "04_prompt_filled_before_send.jpg",
+    "output": "04_prompt_filled_before_send_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "05_after_send_generating.jpg",
+    "output": "05_after_send_generating_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "06_answer_done.jpg",
+    "output": "06_answer_done_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "07_after_download_click.jpg",
+    "output": "07_after_download_click_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "08_back_to_chat_after_blocked_download.jpg",
+    "output": "08_back_to_chat_after_blocked_download_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "09_chatgpt_preview_area.jpg",
+    "output": "09_chatgpt_preview_area_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "10_code_view_attempt.jpg",
+    "output": "10_code_view_attempt_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "11_code_tab.jpg",
+    "output": "11_code_tab_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "new_tab_before_upload.jpg",
+    "output": "new_tab_before_upload_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  },
+  {
+    "source": "new_tab_upload_failed.jpg",
+    "output": "new_tab_upload_failed_redacted.jpg",
+    "width": 1063,
+    "height": 576,
+    "sidebarMaskedPx": 262
+  }
+]

@@ -16,7 +16,7 @@
 
 저장 위치:
 
-`/Users/biztechi/shys_projects/codex_project/e-book/vibecoding/1/gpt/webbook/images/_source-real/chatgpt-first-site/`
+`/Users/y-soo/workspace/codex_projects/projects/e-book/vibecoding/1/webbook/images/_source-real/chatgpt-first-site/`
 
 - `01_chatgpt_before_attach.png`: 실제 ChatGPT 대화 시작 전 화면
 - `02_attached_image_prompt.png`: 실제 첨부 이미지와 첫 웹사이트 요청 프롬프트가 포함된 화면
@@ -30,7 +30,7 @@
 
 추가 저장 위치:
 
-`/Users/biztechi/shys_projects/codex_project/e-book/vibecoding/1/gpt/webbook/images/_source-real/final-public-sites/`
+`/Users/y-soo/workspace/codex_projects/projects/e-book/vibecoding/1/webbook/images/_source-real/final-public-sites/`
 
 - `actual-first-site-index.html`: ChatGPT 답변에서 실제 다운로드한 `index.html`
 - `sample-image.png`: `actual-first-site-index.html` 표시용 샘플 이미지
@@ -41,7 +41,7 @@
 
 저장 위치:
 
-`/Users/biztechi/shys_projects/codex_project/e-book/vibecoding/1/gpt/webbook/images/_edited/first-site-real/`
+`/Users/y-soo/workspace/codex_projects/projects/e-book/vibecoding/1/webbook/images/_edited/first-site-real/`
 
 - `ch02_03_attach_image.png`
 - `ch02_04_first_site_prompt.png`
@@ -63,7 +63,7 @@
 
 교체 위치:
 
-`/Users/biztechi/shys_projects/codex_project/e-book/vibecoding/1/gpt/webbook/images/`
+`/Users/y-soo/workspace/codex_projects/projects/e-book/vibecoding/1/webbook/images/`
 
 - `ch02_03_attach_image.png`
 - `ch02_04_first_site_prompt.png`
@@ -76,7 +76,7 @@
 
 교체 전 mock 이미지는 아래에 보존했습니다.
 
-`/Users/biztechi/shys_projects/codex_project/e-book/vibecoding/1/gpt/webbook/images/_rejected/original-mock-ch02-before-real-replacement/`
+`/Users/y-soo/workspace/codex_projects/projects/e-book/vibecoding/1/webbook/images/_rejected/original-mock-ch02-before-real-replacement/`
 
 ## 5. 교체하지 않은 파일과 이유
 
@@ -123,7 +123,7 @@
 
 저장된 검증 스크린샷:
 
-`/Users/biztechi/shys_projects/codex_project/e-book/vibecoding/1/gpt/webbook/output/playwright/`
+`/Users/y-soo/workspace/codex_projects/projects/e-book/vibecoding/1/webbook/output/playwright/`
 
 - `first-site-real-390.png`
 - `first-site-real-430.png`

@@ -267,6 +267,36 @@ textarea {
   margin: 6px 0;
 }
 
+.book-table {
+  width: 100%;
+  margin: 18px 0;
+  border-collapse: collapse;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+  font-size: 0.96rem;
+}
+
+.book-table th,
+.book-table td {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+
+.book-table th {
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-weight: 900;
+}
+
+.book-table td:first-child {
+  width: 130px;
+  font-weight: 900;
+}
+
 .chapter code {
   padding: 2px 5px;
   background: var(--code-bg);

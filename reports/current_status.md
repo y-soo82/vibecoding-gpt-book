@@ -244,14 +244,14 @@
 다음 작업자는 아래 순서로 읽으면 됩니다.
 
 1. `vibecoding/AGENTS.md`
-2. `vibecoding/1/gpt/reports/current_status.md`
-3. `vibecoding/1/gpt/reports/capture-plan.md`
-4. `vibecoding/1/gpt/reports/phase8-9-image-completion-report.md`
-5. `vibecoding/1/gpt/reports/publication-quality-report.md`
-6. `vibecoding/1/gpt/reports/reviewer-verifier-final-report.md`
-7. `vibecoding/1/gpt/epub/sigil-epub-preflight.md`
-8. `vibecoding/1/gpt/webbook/`
-9. `vibecoding/1/gpt/manuscript/`
-10. `vibecoding/1/gpt/prompts/`
+2. `vibecoding/1/reports/current_status.md`
+3. `vibecoding/1/reports/capture-plan.md`
+4. `vibecoding/1/reports/phase8-9-image-completion-report.md`
+5. `vibecoding/1/reports/publication-quality-report.md`
+6. `vibecoding/1/reports/reviewer-verifier-final-report.md`
+7. `vibecoding/1/epub/sigil-epub-preflight.md`
+8. `vibecoding/1/webbook/`
+9. `vibecoding/1/manuscript/`
+10. `vibecoding/1/prompts/`
 
 이 파일을 기준으로 EPUB 제작과 출판 전 편집 판단을 시작하면 됩니다.
